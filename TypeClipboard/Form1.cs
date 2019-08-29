@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TypeClipboard
@@ -97,7 +91,8 @@ namespace TypeClipboard
                 StringBuilder sb = new StringBuilder();
                 sb.Append(clipboard.Substring(0, Math.Min(3, clipboard.Length)));
                 sb.Append(" ... ");
-                sb.Append(clipboard.Substring(clipboard.Length - 3));
+                sb.Append(clipboard.Substring(clipboard.Length - Math.Min(clipboard.Length, 3)));
+                sb.Append(" (" + clipboard.Length.ToString() + " characters)");
                 textBox1.Text = sb.ToString();
             }
             else
