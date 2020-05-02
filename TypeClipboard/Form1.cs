@@ -9,6 +9,9 @@ namespace TypeClipboard
     {
         const int WS_EX_NOACTIVATE = 0x08000000;
 
+        private LowLevelKeyboardListener _listener;
+        private Typer _tc;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,70 +32,38 @@ namespace TypeClipboard
             }
         }
 
-        public void TypeClipboard()
-        {
-            if (Clipboard.ContainsText(TextDataFormat.UnicodeText))
-            {
-                String clipboard = Clipboard.GetText(TextDataFormat.UnicodeText);
-                Thread.Sleep(2000);
-                foreach (Char c in clipboard.ToCharArray())
-                {
-                    // Some characters have special meaning
-                    // https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/sendkeys-statement
-                    switch (c)
-                    {
-                        case '\n':
-                            return;
-                        case '\r':
-                            return;
-                        case '{':
-                            SendKeys.Send("{{}");
-                            break;
-                        case '}':
-                            SendKeys.Send("{}}");
-                            break;
-                        case '+':
-                            SendKeys.Send("{+}");
-                            break;
-                        case '^':
-                            SendKeys.Send("{^}");
-                            break;
-                        case '%':
-                            SendKeys.Send("{%}");
-                            break;
-                        case '~':
-                            SendKeys.Send("{~}");
-                            break;
-                        case '(':
-                            SendKeys.Send("{(}");
-                            break;
-                        case ')':
-                            SendKeys.Send("{)}");
-                            break;
-                        default:
-                            SendKeys.Send(c.ToString());
-                            break;
-                    }
-                    Thread.Sleep(10);
-                }
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            TypeClipboard();
+            _tc.TypeClipboard(2000);
         }
 
-        public void UpdateTextbox()
+        public void UpdateTextbox(EventArgs e = null)
         {
             if (Clipboard.ContainsText(TextDataFormat.UnicodeText))
             {
                 String clipboard = Clipboard.GetText(TextDataFormat.UnicodeText);
                 StringBuilder sb = new StringBuilder();
-                sb.Append(clipboard.Substring(0, Math.Min(3, clipboard.Length)));
-                sb.Append(" ... ");
-                sb.Append(clipboard.Substring(clipboard.Length - Math.Min(clipboard.Length, 3)));
-                sb.Append(" (" + clipboard.Length.ToString() + " characters)");
+
+                if (clipboard.Length <= 4)
+                {
+                    sb.Append(" (" + clipboard.Length.ToString() + " characters)");
+                }
+                else if (clipboard.Length <= 9)
+                {
+                    sb.Append(clipboard.Substring(0, 1));
+                    sb.Append("...");
+                    sb.Append(clipboard.Substring(clipboard.Length - 1));
+                    sb.Append(" (" + clipboard.Length.ToString() + " characters)");
+                }
+                else
+                {
+                    sb.Append(clipboard.Substring(0, 3));
+                    sb.Append("...");
+                    sb.Append(clipboard.Substring(clipboard.Length - 3));
+                    sb.Append(" (" + clipboard.Length.ToString() + " characters)");
+                }
+
+                
                 textBox1.Text = sb.ToString();
             }
             else
@@ -114,6 +85,41 @@ namespace TypeClipboard
         private void Form1_MouseEnter(object sender, EventArgs e)
         {
             UpdateTextbox();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            _listener = new LowLevelKeyboardListener();
+            // Changing the Checked property also hooks the listener
+            chkHotkey.Checked = Properties.Settings.Default.enableHotkey;
+
+            _tc = new Typer();
+
+            ClipboardNotification.ClipboardUpdate += delegate (object cb_sender, EventArgs cb_e) {
+                UpdateTextbox();
+            };
+            UpdateTextbox();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _listener.UnHookKeyboard();
+        }
+
+        private void chkHotkey_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.enableHotkey = chkHotkey.Checked;
+
+            if (Properties.Settings.Default.enableHotkey)
+            {
+                _listener.HookKeyboard();
+            }
+            else
+            {
+                _listener.UnHookKeyboard();
+            }
+            
+            Properties.Settings.Default.Save();
         }
     }
 }
