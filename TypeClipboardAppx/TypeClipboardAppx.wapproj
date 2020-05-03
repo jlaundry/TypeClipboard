@@ -50,13 +50,14 @@
   </PropertyGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
   <PropertyGroup>
-    <ProjectGuid>464d3f7b-8eb2-464e-a036-03fe6366c2a3</ProjectGuid>
+    <ProjectGuid>d041bcc6-3c9d-4bdc-8443-2bec9b290d1a</ProjectGuid>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\TypeClipboard\TypeClipboard.csproj</EntryPointProjectUniqueName>
-    <PackageCertificateThumbprint>1FE726909EEA4590EFD12ABAF82B374BA7F31A8A</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>EDF7AD114131F0B214964425CA64FE9BE1F7822C</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>TypeClipboardAppx_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
