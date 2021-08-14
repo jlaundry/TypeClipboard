@@ -121,5 +121,10 @@ namespace TypeClipboard
             
             Properties.Settings.Default.Save();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _tc.Type(textBox2.Text);
+        }
     }
 }
