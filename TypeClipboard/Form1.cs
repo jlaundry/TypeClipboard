@@ -126,5 +126,11 @@ namespace TypeClipboard
         {
             _tc.Type(textBox2.Text);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            String clipboard = Clipboard.GetText(TextDataFormat.UnicodeText);
+            textBox2.Text = clipboard;
+        }
     }
 }
