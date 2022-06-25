@@ -63,7 +63,8 @@
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
     <AppInstallerUri>C:\temp</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>DFF25B896771BFB75D948AD107C34534A21A08B1</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>0AF17626AE23A8AA61789F56A539111877550E76</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>TypeClipboardAppx_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AppxBundle>Always</AppxBundle>

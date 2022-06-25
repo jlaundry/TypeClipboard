@@ -90,10 +90,13 @@ namespace TypeClipboard
         private void Form1_Load(object sender, EventArgs e)
         {
             _listener = new LowLevelKeyboardListener();
-            // Changing the Checked property also hooks the listener
+            // Changing the chkHotkey.Checked property also hooks the listener
             chkHotkey.Checked = Properties.Settings.Default.enableHotkey;
-
+            
             _tc = new Typer();
+
+            // Changing the chkEnter.Checked property also changes _tc.TypeEnter property
+            chkEnter.Checked = Properties.Settings.Default.enableEnter;
 
             ClipboardNotification.ClipboardUpdate += delegate (object cb_sender, EventArgs cb_e) {
                 UpdateTextbox();
@@ -131,6 +134,13 @@ namespace TypeClipboard
         {
             String clipboard = Clipboard.GetText(TextDataFormat.UnicodeText);
             textBox2.Text = clipboard;
+        }
+
+        private void chkEnter_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.enableEnter = chkEnter.Checked;
+            _tc.TypeEnter = chkEnter.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -12,6 +12,9 @@ namespace TypeClipboard
     {
         private const int INTERKEY_DELAY = 20;
 
+        private bool _typeEnter = false;
+        public bool TypeEnter { get => _typeEnter; set => _typeEnter = value; }
+
         public void Type(String str, int delay = 2000)
         {
             Thread.Sleep(delay);
@@ -22,9 +25,23 @@ namespace TypeClipboard
                 switch (c)
                 {
                     case '\n':
-                        return;
+                        if (_typeEnter)
+                        {
+                            SendKeys.Send("{ENTER}");
+                            break;
+                        } else
+                        {
+                            return;
+                        }
                     case '\r':
-                        return;
+                        if (_typeEnter)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            return;
+                        }
                     case '{':
                         SendKeys.Send("{{}");
                         break;
