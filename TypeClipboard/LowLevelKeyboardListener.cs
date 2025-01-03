@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Input;
 
 
@@ -92,7 +93,8 @@ namespace TypeClipboard
                 if (keyPressed == Key.F8)
                 {
                     // Call Type Clipboard
-                    _tc.TypeClipboard(100);
+                    // ToDo: Implement get values of interkeyDelay and delay from the form
+                    _tc.TypeClipboard(20, 100);
 
                     // Prevent key bring pressed further into the app
                     return new IntPtr(1);

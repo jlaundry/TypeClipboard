@@ -7,8 +7,8 @@ namespace TypeClipboard
 {
     public partial class Form1 : Form
     {
-        const int WS_EX_NOACTIVATE = 0x08000000;
-
+        private const int WS_EX_TOPMOST = 0x00000008;
+        
         private LowLevelKeyboardListener _listener;
         private Typer _tc;
 
@@ -16,6 +16,12 @@ namespace TypeClipboard
         {
             InitializeComponent();
             Thread.Sleep(100);
+        }
+        
+        
+        protected override bool ShowWithoutActivation
+        {
+            get { return true; }
         }
 
         //
@@ -27,14 +33,19 @@ namespace TypeClipboard
             get
             {
                 CreateParams param = base.CreateParams;
-                param.ExStyle |= WS_EX_NOACTIVATE;
+                param.ExStyle |= WS_EX_TOPMOST;
                 return param;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _tc.TypeClipboard(2000);
+            int delay = 2000;
+            if (!int.TryParse(tbInterkeyDelay.Text, out int interkeyDelay))
+            {
+                interkeyDelay = 20;
+            }
+            _tc.TypeClipboard(interkeyDelay, delay);
         }
 
         public void UpdateTextbox(EventArgs e = null)
@@ -127,7 +138,12 @@ namespace TypeClipboard
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _tc.Type(textBox2.Text);
+            int delay = 2000;
+            if (!int.TryParse(tbInterkeyDelay.Text, out int interkeyDelay))
+            {
+                interkeyDelay = 20;
+            }
+            _tc.Type(textBox2.Text, interkeyDelay, delay);
         }
 
         private void button3_Click(object sender, EventArgs e)
