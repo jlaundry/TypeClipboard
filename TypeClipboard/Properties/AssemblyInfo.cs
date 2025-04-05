@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jed Laundry")]
 [assembly: AssemblyProduct("Type Clipboard")]
-[assembly: AssemblyCopyright("Copyright © Jed Laundry, 2022")]
+[assembly: AssemblyCopyright("Copyright © Jed Laundry, 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
