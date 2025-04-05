@@ -51,11 +51,12 @@ namespace TypeClipboard
 
         private LowLevelKeyboardProc _proc;
         private IntPtr _hookID = IntPtr.Zero;
-        private Typer _tc = new Typer();
+        public Typer _tc;
 
-        public LowLevelKeyboardListener()
+        public LowLevelKeyboardListener(Typer tc)
         {
             _proc = HookCallback;
+            _tc = tc;
         }
 
         public void HookKeyboard()
