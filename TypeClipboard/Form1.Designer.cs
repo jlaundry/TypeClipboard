@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.chkHotkey = new System.Windows.Forms.CheckBox();
@@ -36,7 +35,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.chkEnter = new System.Windows.Forms.CheckBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tbInterkeyDelay = new System.Windows.Forms.TextBox();
+            this.lInterkeyDelay = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -66,7 +66,6 @@
             this.chkHotkey.Size = new System.Drawing.Size(73, 17);
             this.chkHotkey.TabIndex = 2;
             this.chkHotkey.Text = "F8 hotkey";
-            this.toolTip1.SetToolTip(this.chkHotkey, "Enables the F8 hotkey");
             this.chkHotkey.UseVisualStyleBackColor = true;
             this.chkHotkey.CheckedChanged += new System.EventHandler(this.chkHotkey_CheckedChanged);
             // 
@@ -107,20 +106,37 @@
             this.chkEnter.Size = new System.Drawing.Size(78, 17);
             this.chkEnter.TabIndex = 7;
             this.chkEnter.Text = "Type Enter";
-            this.toolTip1.SetToolTip(this.chkEnter, "If set, Type will type newline (\\n) as Enter, which is useful for large blobs of " +
-        "text.\r\n\r\nIf unset, Type will stop before the first newline, which is useful for " +
-        "passwords.");
             this.chkEnter.UseVisualStyleBackColor = true;
             this.chkEnter.CheckedChanged += new System.EventHandler(this.chkEnter_CheckedChanged);
             // 
-            // toolTip1
+            // tbInterkeyDelay
             // 
-            this.toolTip1.ShowAlways = true;
+            this.tbInterkeyDelay.CausesValidation = false;
+            this.tbInterkeyDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbInterkeyDelay.Location = new System.Drawing.Point(158, 93);
+            this.tbInterkeyDelay.MaxLength = 5;
+            this.tbInterkeyDelay.Name = "tbInterkeyDelay";
+            this.tbInterkeyDelay.Size = new System.Drawing.Size(55, 22);
+            this.tbInterkeyDelay.TabIndex = 8;
+            this.tbInterkeyDelay.Text = "20";
+            this.tbInterkeyDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lInterkeyDelay
+            // 
+            this.lInterkeyDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lInterkeyDelay.Location = new System.Drawing.Point(12, 96);
+            this.lInterkeyDelay.Name = "lInterkeyDelay";
+            this.lInterkeyDelay.Size = new System.Drawing.Size(140, 14);
+            this.lInterkeyDelay.TabIndex = 9;
+            this.lInterkeyDelay.Text = "Interkey Delay (ms)";
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(334, 99);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.ClientSize = new System.Drawing.Size(334, 122);
+            this.Controls.Add(this.lInterkeyDelay);
+            this.Controls.Add(this.tbInterkeyDelay);
             this.Controls.Add(this.chkEnter);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);
@@ -129,6 +145,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
@@ -141,8 +158,11 @@
             this.MouseEnter += new System.EventHandler(this.Form1_MouseEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Label lInterkeyDelay;
+
+        private System.Windows.Forms.TextBox tbInterkeyDelay;
 
         #endregion
 
@@ -153,7 +173,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox chkEnter;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

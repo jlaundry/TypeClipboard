@@ -10,12 +10,10 @@ namespace TypeClipboard
 {
     class Typer
     {
-        private const int INTERKEY_DELAY = 20;
-
         private bool _typeEnter = false;
         public bool TypeEnter { get => _typeEnter; set => _typeEnter = value; }
 
-        public void Type(String str, int delay = 2000)
+        public void Type(String str, int interkeyDelay = 20, int delay = 2000)
         {
             Thread.Sleep(delay);
             foreach (Char c in str.ToCharArray())
@@ -70,16 +68,16 @@ namespace TypeClipboard
                         SendKeys.Send(c.ToString());
                         break;
                 }
-                Thread.Sleep(INTERKEY_DELAY);
+                Thread.Sleep(interkeyDelay);
             }
         }
 
-        public void TypeClipboard(int delay = 2000)
+        public void TypeClipboard(int interkeyDelay = 20, int delay = 2000)
         {
             if (Clipboard.ContainsText(TextDataFormat.UnicodeText))
             {
                 String clipboard = Clipboard.GetText(TextDataFormat.UnicodeText);
-                this.Type(clipboard, delay);
+                this.Type(clipboard, interkeyDelay, delay);
             }
         }
     }
