@@ -22,4 +22,4 @@ Tested with a wide variety of consoles, including vSphere, Horizon (HTML5), and 
   * **VMWare / Omnissa Horizon desktop client** uses a low-level keyboard driver, which SendKeys can't send to.
     * This may be fixed in v1.5 - I need feedback please!
   * **Using different keyboard layouts** between source and destination causes the sent keys to be mapped to the destination key location, not the intended source value. [#2](https://github.com/jlaundry/TypeClipboard/issues/2) [#3](https://github.com/jlaundry/TypeClipboard/issues/3)
-    * Fixed in v1.5: https://github.com/jlaundry/TypeClipboard/releases/tag/1.5.0
+    * Fixed in v1.5: https://github.com/jlaundry/TypeClipboard/releases/tag/v1.5.0
