@@ -89,11 +89,10 @@ namespace TypeClipboard
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _listener = new LowLevelKeyboardListener();
+            _tc = new Typer();
+            _listener = new LowLevelKeyboardListener(_tc);
             // Changing the chkHotkey.Checked property also hooks the listener
             chkHotkey.Checked = Properties.Settings.Default.enableHotkey;
-            
-            _tc = new Typer();
 
             // Changing the chkEnter.Checked property also changes _tc.TypeEnter property
             chkEnter.Checked = Properties.Settings.Default.enableEnter;

@@ -63,7 +63,6 @@
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
     <AppInstallerUri>C:\temp</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>0AF17626AE23A8AA61789F56A539111877550E76</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>TypeClipboardAppx_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -109,6 +108,7 @@
     <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Images\StoreLogo.png" />
     <Content Include="Images\Wide310x150Logo.scale-200.png" />
+    <None Include="TypeClipboardAppx_TemporaryKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
