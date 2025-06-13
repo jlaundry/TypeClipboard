@@ -37,6 +37,9 @@
             button3 = new Button();
             chkEnter = new CheckBox();
             toolTip1 = new ToolTip(components);
+            label1 = new Label();
+            comboBox1 = new ComboBox();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // textBox1
@@ -115,11 +118,45 @@
             // 
             toolTip1.ShowAlways = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 94);
+            label1.Name = "label1";
+            label1.Size = new Size(41, 15);
+            label1.TabIndex = 8;
+            label1.Text = "Mode:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "SendInput", "SendKeys" });
+            comboBox1.Location = new Point(59, 93);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 9;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(186, 94);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(32, 15);
+            linkLabel1.TabIndex = 10;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Help";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(344, 99);
+            ClientSize = new Size(344, 123);
+            Controls.Add(linkLabel1);
+            Controls.Add(comboBox1);
+            Controls.Add(label1);
             Controls.Add(chkEnter);
             Controls.Add(button3);
             Controls.Add(textBox2);
@@ -153,5 +190,8 @@
         private Button button3;
         private CheckBox chkEnter;
         private ToolTip toolTip1;
+        private Label label1;
+        private ComboBox comboBox1;
+        private LinkLabel linkLabel1;
     }
 }

@@ -9,7 +9,10 @@ namespace TypeClipboard
         private const int INTERKEY_DELAY = 50;
 
         private bool _typeEnter = false;
+        private string _typeMethod = "SendInput";
         public bool TypeEnter { get => _typeEnter; set => _typeEnter = value; }
+
+        public string TypeMethod { get => _typeMethod; set => _typeMethod = value; }
 
         public void Type(String str, int delay = 2000)
         {
@@ -18,12 +21,69 @@ namespace TypeClipboard
             //KeyboardTyper.Reset();
 
             KeyboardTyper.Type(str, _typeEnter, INTERKEY_DELAY);
-            //KeyboardTyper.Press(Key.LeftShift);
-            //KeyboardTyper.Type("hello, capitalized world");
-            //KeyboardTyper.Release(Key.LeftShift);
 
             NativeMethods.BlockInput(false);
 
+        }
+
+        public void TypeWithSendKeys(String str, int delay)
+        {
+            Thread.Sleep(delay);
+            foreach (Char c in str.ToCharArray())
+            {
+                // Some characters have special meaning
+                // https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/sendkeys-statement
+                switch (c)
+                {
+                    case '\n':
+                        if (_typeEnter)
+                        {
+                            SendKeys.Send("{ENTER}");
+                            break;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    case '\r':
+                        if (_typeEnter)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    case '{':
+                        SendKeys.Send("{{}");
+                        break;
+                    case '}':
+                        SendKeys.Send("{}}");
+                        break;
+                    case '+':
+                        SendKeys.Send("{+}");
+                        break;
+                    case '^':
+                        SendKeys.Send("{^}");
+                        break;
+                    case '%':
+                        SendKeys.Send("{%}");
+                        break;
+                    case '~':
+                        SendKeys.Send("{~}");
+                        break;
+                    case '(':
+                        SendKeys.Send("{(}");
+                        break;
+                    case ')':
+                        SendKeys.Send("{)}");
+                        break;
+                    default:
+                        SendKeys.Send(c.ToString());
+                        break;
+                }
+                Thread.Sleep(INTERKEY_DELAY);
+            }
         }
 
         public void TypeClipboard(int delay = 2000)
@@ -31,7 +91,15 @@ namespace TypeClipboard
             if (Clipboard.ContainsText(TextDataFormat.UnicodeText))
             {
                 String clipboard = Clipboard.GetText(TextDataFormat.UnicodeText);
-                this.Type(clipboard, delay);
+                if (_typeMethod == "SendKeys")
+                {
+                    TypeWithSendKeys(clipboard, delay);
+                }
+                else
+                {
+                    // SendInput is default
+                    Type(clipboard, delay);
+                }
             }
         }
     }

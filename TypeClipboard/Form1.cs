@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -97,6 +98,8 @@ namespace TypeClipboard
             // Changing the chkEnter.Checked property also changes _tc.TypeEnter property
             chkEnter.Checked = Properties.Settings.Default.enableEnter;
 
+            comboBox1.SelectedItem = Properties.Settings.Default.typeMethod;
+
             ClipboardNotification.ClipboardUpdate += delegate (object cb_sender, EventArgs cb_e)
             {
                 UpdateTextbox();
@@ -140,6 +143,25 @@ namespace TypeClipboard
         {
             Properties.Settings.Default.enableEnter = chkEnter.Checked;
             _tc.TypeEnter = chkEnter.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo { FileName = @"https://github.com/jlaundry/TypeClipboard/wiki/Help", UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to open default browser. Go to https://github.com/jlaundry/TypeClipboard/wiki/Help");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.typeMethod = (string)comboBox1.SelectedItem;
+            _tc.TypeMethod = (string)comboBox1.SelectedItem;
             Properties.Settings.Default.Save();
         }
     }
