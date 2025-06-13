@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36202.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeClipboard", "TypeClipboard\TypeClipboard.csproj", "{AFF27396-3E91-471E-B46B-2D2DA30FE6DB}"
 EndProject
@@ -76,6 +76,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5EEF55EE-BA4E-44D7-86FC-BF400D4D2424}
+		SolutionGuid = {72B1A5CF-B914-4E7B-9C0D-E0D565E2F6D0}
 	EndGlobalSection
 EndGlobal

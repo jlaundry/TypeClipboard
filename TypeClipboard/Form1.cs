@@ -63,7 +63,7 @@ namespace TypeClipboard
                     sb.Append(" (" + clipboard.Length.ToString() + " characters)");
                 }
 
-                
+
                 textBox1.Text = sb.ToString();
             }
             else
@@ -97,7 +97,8 @@ namespace TypeClipboard
             // Changing the chkEnter.Checked property also changes _tc.TypeEnter property
             chkEnter.Checked = Properties.Settings.Default.enableEnter;
 
-            ClipboardNotification.ClipboardUpdate += delegate (object cb_sender, EventArgs cb_e) {
+            ClipboardNotification.ClipboardUpdate += delegate (object cb_sender, EventArgs cb_e)
+            {
                 UpdateTextbox();
             };
             UpdateTextbox();
@@ -120,7 +121,7 @@ namespace TypeClipboard
             {
                 _listener.UnHookKeyboard();
             }
-            
+
             Properties.Settings.Default.Save();
         }
 
