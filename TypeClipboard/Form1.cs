@@ -35,7 +35,7 @@ namespace TypeClipboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _tc.TypeClipboard(2000);
+            _tc.TypeClipboard((int)numTypeDelay.Value);
         }
 
         public void UpdateTextbox(EventArgs e = null)
@@ -100,6 +100,9 @@ namespace TypeClipboard
 
             comboBox1.SelectedItem = Properties.Settings.Default.typeMethod;
 
+            numTypeDelay.Value = Properties.Settings.Default.typeDelayMS;
+            numInterkeyDelay.Value = Properties.Settings.Default.interkeyDelayMS;
+
             ClipboardNotification.ClipboardUpdate += delegate (object cb_sender, EventArgs cb_e)
             {
                 UpdateTextbox();
@@ -162,6 +165,19 @@ namespace TypeClipboard
         {
             Properties.Settings.Default.typeMethod = (string)comboBox1.SelectedItem;
             _tc.TypeMethod = (string)comboBox1.SelectedItem;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numTypeDelay_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.typeDelayMS = (int)numTypeDelay.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numInterkeyDelay_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.interkeyDelayMS = (int)numInterkeyDelay.Value;
+            _tc.InterkeyDelay = (int)numInterkeyDelay.Value;
             Properties.Settings.Default.Save();
         }
     }

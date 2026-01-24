@@ -8,5 +8,14 @@
     <Setting Name="enableEnter" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="typeMethod" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SendKeys</Value>
+    </Setting>
+    <Setting Name="typeDelayMS" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
+    <Setting Name="interkeyDelayMS" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

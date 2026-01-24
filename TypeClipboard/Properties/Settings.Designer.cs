@@ -26,45 +26,60 @@ namespace TypeClipboard.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool enableHotkey
-        {
-            get
-            {
+        public bool enableHotkey {
+            get {
                 return ((bool)(this["enableHotkey"]));
             }
-            set
-            {
+            set {
                 this["enableHotkey"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool enableEnter
-        {
-            get
-            {
+        public bool enableEnter {
+            get {
                 return ((bool)(this["enableEnter"]));
             }
-            set
-            {
+            set {
                 this["enableEnter"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SendInput")]
-        public string typeMethod
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("SendKeys")]
+        public string typeMethod {
+            get {
                 return ((string)(this["typeMethod"]));
             }
-            set
-            {
+            set {
                 this["typeMethod"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int typeDelayMS {
+            get {
+                return ((int)(this["typeDelayMS"]));
+            }
+            set {
+                this["typeDelayMS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int interkeyDelayMS {
+            get {
+                return ((int)(this["interkeyDelayMS"]));
+            }
+            set {
+                this["interkeyDelayMS"] = value;
             }
         }
     }
