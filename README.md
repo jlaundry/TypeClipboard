@@ -23,3 +23,13 @@ Tested with a wide variety of consoles, including vSphere, Horizon (HTML5), and 
     * This may be fixed in v1.5 - I need feedback please!
   * **Using different keyboard layouts** between source and destination causes the sent keys to be mapped to the destination key location, not the intended source value. [#2](https://github.com/jlaundry/TypeClipboard/issues/2) [#3](https://github.com/jlaundry/TypeClipboard/issues/3)
     * Fixed in v1.5: https://github.com/jlaundry/TypeClipboard/releases/tag/v1.5.0
+
+## Developing
+
+My development environment is (currently) Windows 11 Enterprise on arm64, with Visual Studio Community 2026.
+
+When installing, you will need the following components:
+
+  * .NET desktop development (just the basic .NET 4.7.2 options)
+  * WinUI application development
+  * Windows 11 SDK (10.0.26100.0)
