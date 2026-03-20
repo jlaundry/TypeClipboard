@@ -14,7 +14,8 @@ namespace TypeClipboard
 {
     public class Typer
     {
-        private const int INTERKEY_DELAY = 50;
+        private int _interkeyDelay = 50;
+        public int InterkeyDelay { get { return _interkeyDelay; } set { _interkeyDelay = value; } }
 
         private bool _typeEnter = false;
         private string _typeMethod = "SendInput";
@@ -28,7 +29,7 @@ namespace TypeClipboard
             NativeMethods.BlockInput(true);
             //KeyboardTyper.Reset();
 
-            KeyboardTyper.Type(str, _typeEnter, INTERKEY_DELAY);
+            KeyboardTyper.Type(str, _typeEnter, _interkeyDelay);
 
             NativeMethods.BlockInput(false);
 
@@ -90,7 +91,7 @@ namespace TypeClipboard
                         SendKeys.Send(c.ToString());
                         break;
                 }
-                Thread.Sleep(INTERKEY_DELAY);
+                Thread.Sleep(_interkeyDelay);
             }
         }
 

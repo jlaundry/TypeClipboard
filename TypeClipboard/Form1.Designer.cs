@@ -42,6 +42,12 @@ namespace TypeClipboard
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.numTypeDelay = new System.Windows.Forms.NumericUpDown();
+            this.numInterkeyDelay = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numTypeDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInterkeyDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -59,7 +65,7 @@ namespace TypeClipboard
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 22);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Type (2s delay)";
+            this.button1.Text = "Type (with delay)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -81,7 +87,7 @@ namespace TypeClipboard
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 22);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Type (2s delay)";
+            this.button2.Text = "Type (with delay)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -148,11 +154,90 @@ namespace TypeClipboard
             this.linkLabel1.Text = "Help";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // numTypeDelay
+            // 
+            this.numTypeDelay.Increment = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numTypeDelay.Location = new System.Drawing.Point(76, 123);
+            this.numTypeDelay.Margin = new System.Windows.Forms.Padding(2);
+            this.numTypeDelay.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numTypeDelay.Name = "numTypeDelay";
+            this.numTypeDelay.ReadOnly = true;
+            this.numTypeDelay.Size = new System.Drawing.Size(60, 20);
+            this.numTypeDelay.TabIndex = 11;
+            this.numTypeDelay.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numTypeDelay.ValueChanged += new System.EventHandler(this.numTypeDelay_ValueChanged);
+            // 
+            // numInterkeyDelay
+            // 
+            this.numInterkeyDelay.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numInterkeyDelay.Location = new System.Drawing.Point(276, 123);
+            this.numInterkeyDelay.Margin = new System.Windows.Forms.Padding(2);
+            this.numInterkeyDelay.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numInterkeyDelay.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numInterkeyDelay.Name = "numInterkeyDelay";
+            this.numInterkeyDelay.ReadOnly = true;
+            this.numInterkeyDelay.Size = new System.Drawing.Size(45, 20);
+            this.numInterkeyDelay.TabIndex = 12;
+            this.numInterkeyDelay.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numInterkeyDelay.ValueChanged += new System.EventHandler(this.numInterkeyDelay_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 125);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Delay (ms):";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(172, 125);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Interkey Delay (ms):";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 124);
+            this.ClientSize = new System.Drawing.Size(332, 152);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numInterkeyDelay);
+            this.Controls.Add(this.numTypeDelay);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.chkEnter);
@@ -173,6 +258,8 @@ namespace TypeClipboard
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Enter += new System.EventHandler(this.Form1_Enter);
             this.MouseEnter += new System.EventHandler(this.Form1_MouseEnter);
+            ((System.ComponentModel.ISupportInitialize)(this.numTypeDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInterkeyDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +277,9 @@ namespace TypeClipboard
         private ToolTip toolTip1;
         private ComboBox comboBox1;
         private LinkLabel linkLabel1;
+        private NumericUpDown numTypeDelay;
+        private NumericUpDown numInterkeyDelay;
+        private Label label1;
+        private Label label2;
     }
 }
