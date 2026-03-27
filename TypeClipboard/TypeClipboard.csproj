@@ -28,7 +28,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
-	  <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
     <!-- Otherwise System.Windows.Input has no methods in .NET 8... -->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
